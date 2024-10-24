@@ -18,7 +18,7 @@ function App() {
           <div class="wave"></div>
           <div class="wave"></div>
         </div>
-        <h1 className="text-8xl font-mono subpixel-antialiased font-semibold">Karan Sharma</h1>
+        <h1 className="text-8xl font-mono subpixel-antialiased font-semibold">Scemo Sharma</h1>
         <div className="lg:flex lg:flex-row min-[320px]:block mt-6 space-x-6 text-lg font-mono font-medium">
           <a href="mailto:sharma.karan9341@gmail.com" class="hover:underline">
             <span class="[&>svg]:h-6 [&>svg]:w-6 flex">
