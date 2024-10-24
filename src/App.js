@@ -13,6 +13,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+        </div>
         <h1 className="text-8xl font-mono subpixel-antialiased font-semibold">Karan Sharma</h1>
         <div className="lg:flex lg:flex-row min-[320px]:block mt-6 space-x-6 text-lg font-mono font-medium">
           <a href="mailto:sharma.karan9341@gmail.com" class="hover:underline">
