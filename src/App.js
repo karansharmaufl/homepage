@@ -61,7 +61,7 @@ function App() {
             <span>Resume</span>
           </button>
         </div>
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
       </header>
     </div>
   );
