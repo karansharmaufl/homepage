@@ -29,7 +29,7 @@ git add -A
 git commit -m "your message"
 git push
 ```
-10. Deply your changes to Github Pages:
+10. Deploy your changes to Github Pages:
 ```
 npm run deploy
 ```
