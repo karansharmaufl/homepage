@@ -13,7 +13,7 @@
 3. Navigate to the directory of the cloned repository
 4. Run the following command
 ```
-curl -O https://raw.githubusercontent.com/karansharmaufl/scripts/refs/heads/main/setup/homepage_setup.sh | bash
+curl -O https://raw.githubusercontent.com/karansharmaufl/scripts/refs/heads/main/setup/homepage_setup.sh && bash homepage_setup.sh 
 ```
 5. Update the userConfig.json file with your information
 6. Replace the resume file.pdf with your resume, resume file should be named file.pdf
