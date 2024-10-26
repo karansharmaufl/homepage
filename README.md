@@ -12,6 +12,19 @@
 2. Clone the repository on your computer
 3. Navigate to the directory of the cloned repository
 4. Run the following command
-    `curl -O https://raw.githubusercontent.com/karansharmaufl/scripts/refs/heads/main/setup/homepage_setup.sh | bash`
+```
+curl -O https://raw.githubusercontent.com/karansharmaufl/scripts/refs/heads/main/setup/homepage_setup.sh | bash
+```
 5. Update the userConfig.json file with your information
 6. Replace the resume file.pdf with your resume, resume file should be named file.pdf
+7. run ```npm start``` to test your changes
+8. Push your changes to github
+```
+git commit -am "your message"
+git push
+```
+9. Run 
+```
+npm run deploy
+```
+10. Navigate to https://{github_username}.github.io/{repository_name}
