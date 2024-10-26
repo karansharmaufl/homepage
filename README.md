@@ -11,25 +11,25 @@
 
 
 ## Steps
-1. Login into github and create a repository 
+1. Login in to github and create a repository 
 2. Clone the repository on your computer
 3. Navigate to the directory of the cloned repository
-4. Run the following command
+4. Run the following command:
 ```
 curl -O https://raw.githubusercontent.com/karansharmaufl/scripts/refs/heads/main/setup/homepage_setup.sh && bash homepage_setup.sh 
 ```
-5. Update homepage value in package.json with this value 
+5. Update the homepage value in package.json with this value:
 https://{github_username}.github.io/{repository_name}
 6. Update the src/resources/userConfig.json file with your information
 7. Replace the src/resources/resume file.pdf with your resume, the file should be named file.pdf
 8. run ```npm start``` to test your changes
-9. Push your changes to github
+9. Push your changes to Github:
 ```
 git add -A
 git commit -m "your message"
 git push
 ```
-10. Deply your changes to github pages 
+10. Deply your changes to Github Pages:
 ```
 npm run deploy
 ```
