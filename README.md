@@ -15,16 +15,19 @@
 ```
 curl -O https://raw.githubusercontent.com/karansharmaufl/scripts/refs/heads/main/setup/homepage_setup.sh && bash homepage_setup.sh 
 ```
-5. Update the userConfig.json file with your information
-6. Replace the resume file.pdf with your resume, resume file should be named file.pdf
-7. run ```npm start``` to test your changes
-8. Push your changes to github
+5. Update homepage value in package.json with this value 
+https://{github_username}.github.io/{repository_name}
+6. Update the src/resources/userConfig.json file with your information
+7. Replace the src/resources/resume file.pdf with your resume, the file should be named file.pdf
+8. run ```npm start``` to test your changes
+9. Push your changes to github
 ```
-git commit -am "your message"
+git add -A
+git commit -m "your message"
 git push
 ```
-9. Run 
+10. Run 
 ```
 npm run deploy
 ```
-10. Navigate to https://{github_username}.github.io/{repository_name}
+11. Navigate to https://{github_username}.github.io/{repository_name}
