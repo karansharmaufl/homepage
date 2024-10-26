@@ -1,5 +1,6 @@
 # 5 minute quick homepage/portfolio, deployed to the cloud and your resume is always accessible to you
 <img width="1800" alt="Screenshot 2024-10-26 at 02 39 09" src="https://github.com/user-attachments/assets/c40050f6-780b-4af0-8598-93deb0f7f373">
+
 ## Requirements
 1. Node.js
 2. NPM
