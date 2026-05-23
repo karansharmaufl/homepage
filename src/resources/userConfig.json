@@ -1,6 +1,40 @@
 {
-    "name": "Karan Sharma",
-    "email": "sharma.karan9341@gmail.com",
-    "linkedin": "https://www.linkedin.com/in/ksh24",
-    "github": "https://github.com/karansharmaufl"
+  "name": "Karan Sharma",
+  "title": "Software Engineer",
+  "blurb": "I design and deliver software for regulated, data-intensive products, with experience across financial services and mortgage technology. My work emphasizes dependable systems, clear user experiences, and strong collaboration with product and operations teams.\n\nThis page provides a concise overview of my background, core technical skills, selected experience, and contact details. A full résumé is available for download.",
+  "email": "sharma.karan9341@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/ksh24",
+  "github": "https://github.com/karansharmaufl",
+  "skillsSectionTitle": "Technical skills",
+  "skills": [
+    "JavaScript & TypeScript",
+    "React & Next.js",
+    "Node.js",
+    "REST APIs & service integration",
+    "SQL & data-intensive workflows",
+    "System design & observability",
+    "CI/CD & cloud deployment"
+  ],
+  "worksSectionTitle": "Experience",
+  "highlightsIntro": "Selected employers and projects.",
+  "highlights": [
+    {
+      "title": "GreenLight",
+      "context": "Professional",
+      "description": "Engineering on consumer-facing financial products, with focus on scalable delivery, compliance-aware implementation, and cross-functional execution from design through production support.",
+      "href": null
+    },
+    {
+      "title": "Black Knight",
+      "context": "Professional",
+      "description": "Software development across mortgage and real estate data platforms, including integrations, observability, and long-lived production systems. Following ICE's acquisition of Black Knight, my organization continued as Dark Matter Technologies.",
+      "href": null
+    },
+    {
+      "title": "permprocessing.fyi",
+      "context": "Independent",
+      "description": "Public Next.js application providing PERM processing timelines, calculators, and practical immigration guides to help users interpret fragmented government processing data.",
+      "href": "https://www.permprocessing.fyi"
+    }
+  ]
 }
