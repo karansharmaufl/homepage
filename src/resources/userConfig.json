@@ -1,39 +1,59 @@
 {
   "name": "Karan Sharma",
-  "title": "Software Engineer",
-  "blurb": "I design and deliver software for regulated, data-intensive products, with experience across financial services and mortgage technology. My work emphasizes dependable systems, clear user experiences, and strong collaboration with product and operations teams.\n\nThis page provides a concise overview of my background, core technical skills, selected experience, and contact details. A full résumé is available for download.",
+  "title": "Software engineer",
+  "tagline": "Distributed systems, full stack, and tools that help real people.",
+  "location": "",
+  "personalNote": "I built permprocessing.fyi because PERM timelines shouldn't feel like guesswork. Most of my day job stays behind logins; this page is the open part.",
+  "blurb": "I've worked in financial services and mortgage tech for years, shipping systems that have to stay correct under load. That usually means Kotlin and Spring Boot on the backend, React and Next.js on the front, and lately more AI-assisted flows where they actually save time.\n\nHappy to talk if you're hiring, want to collaborate, or are curious about something below.",
+  "beyondWork": [
+    "Side projects with a real user in mind",
+    "Immigration and data tooling",
+    "Writing that makes complex systems legible"
+  ],
   "email": "sharma.karan9341@gmail.com",
   "linkedin": "https://www.linkedin.com/in/ksh24",
   "github": "https://github.com/karansharmaufl",
-  "skillsSectionTitle": "Technical skills",
-  "skills": [
-    "JavaScript & TypeScript",
-    "React & Next.js",
-    "Node.js",
-    "REST APIs & service integration",
-    "SQL & data-intensive workflows",
-    "System design & observability",
-    "CI/CD & cloud deployment"
+  "focusAreas": [
+    "Highly scalable distributed systems",
+    "Full stack applications",
+    "AI-driven applications"
   ],
-  "worksSectionTitle": "Experience",
-  "highlightsIntro": "Selected employers and projects.",
+  "skillGroups": [
+    {
+      "name": "Backend",
+      "skills": ["Kotlin", "Spring Boot", "NestJS", "Node.js", "REST APIs & microservices"]
+    },
+    {
+      "name": "Frontend",
+      "skills": ["JavaScript & TypeScript", "React & Next.js", "Streamlit"]
+    },
+    {
+      "name": "Data & infra",
+      "skills": ["MySQL", "DynamoDB", "Redis", "Snowflake", "Kubernetes", "Datadog"]
+    },
+    {
+      "name": "Practice",
+      "skills": ["System design & observability", "CI/CD & cloud deployment"]
+    }
+  ],
+  "skills": [],
   "highlights": [
     {
       "title": "GreenLight",
       "context": "Professional",
-      "description": "Engineering on consumer-facing financial products, with focus on scalable delivery, compliance-aware implementation, and cross-functional execution from design through production support.",
+      "description": "Consumer financial products end to end, with product and compliance in the loop. Focus on shipping fast without breaking what families rely on.",
       "href": null
     },
     {
-      "title": "Black Knight",
+      "title": "Black Knight → Dark Matter",
       "context": "Professional",
-      "description": "Software development across mortgage and real estate data platforms, including integrations, observability, and long-lived production systems. Following ICE's acquisition of Black Knight, my organization continued as Dark Matter Technologies.",
+      "description": "Mortgage and real estate data platforms: integrations, observability, long-running production systems. After ICE acquired Black Knight, my team continued as Dark Matter Technologies.",
       "href": null
     },
     {
       "title": "permprocessing.fyi",
       "context": "Independent",
-      "description": "Public Next.js application providing PERM processing timelines, calculators, and practical immigration guides to help users interpret fragmented government processing data.",
+      "description": "Public site for PERM timelines, calculators, and guides. Full stack, with AI where it helps people read messy government data faster.",
       "href": "https://www.permprocessing.fyi"
     }
   ]

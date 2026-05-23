@@ -9,16 +9,6 @@ const handleDownload = () => {
   link.click();
 };
 
-function initialsFromName(fullName) {
-  return fullName
-    .split(/\s+/)
-    .filter(Boolean)
-    .map((part) => part[0])
-    .join('')
-    .toUpperCase()
-    .slice(0, 4);
-}
-
 function githubHandleFromUrl(url) {
   try {
     const path = new URL(url).pathname.replace(/^\/+|\/+$/g, '');
@@ -28,184 +18,267 @@ function githubHandleFromUrl(url) {
   }
 }
 
+function normalizeSkillGroups(config) {
+  if (Array.isArray(config.skillGroups) && config.skillGroups.length > 0) {
+    return config.skillGroups
+      .map((g) => ({
+        name: g.name,
+        skills: Array.isArray(g.skills) ? g.skills.filter(Boolean) : [],
+      }))
+      .filter((g) => g.skills.length > 0);
+  }
+  const flat = Array.isArray(config.skills) ? config.skills.filter(Boolean) : [];
+  if (flat.length === 0) return [];
+  return [{ name: 'Technical skills', skills: flat }];
+}
+
+function formatLastUpdated() {
+  return new Date().toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
+function fakeVisitorCount() {
+  const base = 3847;
+  const day = Math.floor(Date.now() / 86400000);
+  return String(base + (day % 9000)).padStart(7, '0');
+}
+
 function App() {
+  const config = userConfig;
   const {
     name,
     title,
+    tagline,
+    location,
+    personalNote,
     blurb,
-    marginalia,
+    beyondWork,
     email,
     linkedin,
     github,
-    skillsSectionTitle,
-    skills,
-    worksSectionTitle,
-    highlightsIntro,
+    focusAreas,
     highlights,
-  } = userConfig;
-  const initials = initialsFromName(name);
+  } = config;
+
   const githubHandle = githubHandleFromUrl(github);
-  const skillItems = Array.isArray(skills) ? skills.filter(Boolean) : [];
+  const focusItems = Array.isArray(focusAreas) ? focusAreas.filter(Boolean) : [];
+  const skillGroups = normalizeSkillGroups(config);
   const workItems = Array.isArray(highlights) ? highlights : [];
-  const skillsHeading = skillsSectionTitle?.trim() || 'Technical skills';
-  const workHeading = worksSectionTitle?.trim() || 'Experience';
+  const interestItems = Array.isArray(beyondWork) ? beyondWork.filter(Boolean) : [];
+  const lastUpdated = formatLastUpdated();
+  const visitors = fakeVisitorCount();
 
   return (
-    <div className="app-surface min-h-screen">
-      <div className="mx-auto max-w-5xl px-5 pb-20 pt-14 sm:px-8 sm:pt-20 lg:px-12">
-        <div className="lg:grid lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14">
-          <aside className="mb-12 border-l-[3px] border-rust pl-5 lg:col-span-4 lg:mb-0 lg:pl-6">
-            <p
-              className="font-serif text-[2.75rem] font-medium leading-none tracking-tight text-rust sm:text-5xl"
-              aria-hidden
-            >
-              {initials}
-            </p>
-            {marginalia ? (
-              <p className="mt-6 font-sans text-sm leading-relaxed text-ink-muted">{marginalia}</p>
-            ) : null}
-            <nav
-              className={`space-y-3 font-sans text-sm ${marginalia ? 'mt-10' : 'mt-6'}`}
-              aria-label="Contact and profiles"
-            >
-              <div>
-                <a
-                  href={`mailto:${email}`}
-                  className="text-ink underline decoration-rust/35 decoration-1 underline-offset-[5px] transition hover:decoration-rust"
-                >
-                  {email}
-                </a>
-              </div>
-              <div>
-                <a
-                  href={linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-ink underline decoration-rust/35 decoration-1 underline-offset-[5px] transition hover:decoration-rust"
-                >
-                  LinkedIn
-                </a>
-              </div>
-              <div>
-                <a
-                  href={github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-ink underline decoration-rust/35 decoration-1 underline-offset-[5px] transition hover:decoration-rust"
-                >
-                  GitHub (@{githubHandle})
-                </a>
-              </div>
-            </nav>
-          </aside>
+    <div className="retro-page">
+      <div className="retro-wrap">
+        <div className="retro-banner">{name}'s Home Page</div>
+        <div className="retro-subbanner">
+          {title}
+          {location ? ` · ${location}` : ''}
+          {tagline ? ` — ${tagline}` : ''}
+        </div>
 
-          <main className="lg:col-span-8">
-            <h1 className="font-serif text-display font-semibold tracking-tight text-ink">{name}</h1>
-            <p className="mt-2 font-sans text-lg font-medium text-ink-muted sm:text-xl">{title}</p>
-            <div className="mt-8 max-w-2xl font-sans text-base leading-[1.75] text-ink-muted sm:text-[1.0625rem]">
-              {blurb.split('\n').map((para, i) => (
-                <p key={i} className={i > 0 ? 'mt-4' : ''}>
-                  {para}
-                </p>
-              ))}
-            </div>
+        <div className="retro-status" role="presentation">
+          Welcome. This page is occasionally updated.
+        </div>
 
-            {skillItems.length > 0 ? (
-              <section className="mt-14 max-w-2xl" aria-labelledby="skills-section-heading">
-                <h2
-                  id="skills-section-heading"
-                  className="font-serif text-2xl font-semibold tracking-tight text-ink sm:text-[1.75rem]"
-                >
-                  {skillsHeading}
-                </h2>
-                <ul className="mt-6 flex list-none flex-wrap gap-2 p-0">
-                  {skillItems.map((skill) => (
-                    <li
-                      key={skill}
-                      className="border border-ink/15 bg-cream/60 px-3 py-1.5 font-sans text-sm text-ink"
-                    >
-                      {skill}
+        <div className="retro-ticker-wrap" aria-hidden>
+          <div className="retro-ticker">
+            <span className="retro-ticker-inner">
+              Software engineer · Distributed systems · Full stack · AI-driven applications ·
+              permprocessing.fyi ·
+            </span>
+          </div>
+        </div>
+
+        <table className="retro-layout" cellPadding={0} cellSpacing={0} role="presentation">
+          <tbody>
+            <tr>
+              <td className="retro-sidebar">
+                <h2>Navigation</h2>
+                <ul>
+                  <li>
+                    <a href="#about">About Me</a>
+                  </li>
+                  <li>
+                    <a href="#experience">Experience</a>
+                  </li>
+                  <li>
+                    <a href="#skills">Technical Skills</a>
+                  </li>
+                  {interestItems.length > 0 ? (
+                    <li>
+                      <a href="#beyond">Beyond Work</a>
                     </li>
-                  ))}
+                  ) : null}
+                  <li>
+                    <a href="#contact">Contact</a>
+                  </li>
                 </ul>
-              </section>
-            ) : null}
 
-            {workItems.length > 0 ? (
-              <section className="mt-14 max-w-2xl" aria-labelledby="work-section-heading">
-                <h2
-                  id="work-section-heading"
-                  className="font-serif text-2xl font-semibold tracking-tight text-ink sm:text-[1.75rem]"
-                >
-                  {workHeading}
-                </h2>
-                {highlightsIntro ? (
-                  <p className="mt-3 font-sans text-sm leading-relaxed text-ink-muted sm:text-[0.9375rem]">
-                    {highlightsIntro}
-                  </p>
+                <h2>Quick Links</h2>
+                <ul>
+                  <li>
+                    <a href={`mailto:${email}`}>E-mail</a>
+                  </li>
+                  <li>
+                    <a href={linkedin} target="_blank" rel="noopener noreferrer">
+                      LinkedIn
+                    </a>
+                  </li>
+                  <li>
+                    <a href={github} target="_blank" rel="noopener noreferrer">
+                      GitHub
+                    </a>
+                  </li>
+                  <li>
+                    <button type="button" className="retro-btn" onClick={handleDownload}>
+                      Résumé (.pdf)
+                    </button>
+                  </li>
+                </ul>
+
+                <p style={{ margin: '14px 0 6px', fontSize: '12px' }}>
+                  <strong>Visitors:</strong>
+                </p>
+                <span className="retro-counter" aria-label={`Visitor count ${visitors}`}>
+                  {visitors}
+                </span>
+                <p style={{ margin: '12px 0 0', fontSize: '11px', color: '#333' }}>
+                  Last updated:
+                  <br />
+                  <em>{lastUpdated}</em>
+                </p>
+              </td>
+
+              <td className="retro-main">
+                <p className="retro-note">
+                  Personal home page. Last revised {lastUpdated}.
+                </p>
+
+                <h2 id="about">About Me</h2>
+                {personalNote ? <p>{personalNote}</p> : null}
+                {blurb.split('\n').map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+
+                {focusItems.length > 0 ? (
+                  <>
+                    <hr className="retro-hr" />
+                    <h2>Focus Areas</h2>
+                    <div className="retro-box">
+                      <ul className="retro-focus-list">
+                        {focusItems.map((area) => (
+                          <li key={area}>
+                            <strong>{area}</strong>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
                 ) : null}
-                <ul className="mt-10 list-none space-y-0 p-0">
-                  {workItems.map((item, index) => (
-                    <li
-                      key={`${item.title}-${index}`}
-                      className="border-t border-ink/10 py-9 first:border-t-0 first:pt-0 last:pb-0"
-                    >
-                      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                        <h3 className="font-serif text-xl font-semibold text-ink sm:text-[1.35rem]">
+
+                {workItems.length > 0 ? (
+                  <>
+                    <hr className="retro-hr" />
+                    <h2 id="experience">Professional Experience</h2>
+                    {workItems.map((item, index) => (
+                      <div key={`${item.title}-${index}`}>
+                        <h3>
                           {item.href ? (
-                            <a
-                              href={item.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-ink underline decoration-rust/40 decoration-1 underline-offset-[5px] transition hover:decoration-rust"
-                            >
+                            <a href={item.href} target="_blank" rel="noopener noreferrer">
                               {item.title}
                             </a>
                           ) : (
                             item.title
                           )}
+                          {item.context ? (
+                            <>
+                              {' '}
+                              <span className="retro-tag">{item.context}</span>
+                            </>
+                          ) : null}
                         </h3>
-                        {item.context ? (
-                          <span className="font-sans text-xs font-semibold uppercase tracking-wider text-rust">
-                            {item.context}
-                          </span>
-                        ) : null}
+                        <p>{item.description}</p>
                       </div>
-                      <p className="mt-3 font-sans text-[0.9375rem] leading-relaxed text-ink-muted sm:text-base">
-                        {item.description}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ) : null}
+                    ))}
+                  </>
+                ) : null}
 
-            <div className="mt-12">
-              <button
-                type="button"
-                onClick={handleDownload}
-                className="border border-rust-deep bg-rust px-5 py-3 font-sans text-sm font-semibold tracking-wide text-cream transition hover:bg-rust-deep focus:outline-none focus-visible:ring-2 focus-visible:ring-rust-deep focus-visible:ring-offset-2 focus-visible:ring-offset-parchment"
-              >
-                Download résumé (PDF)
-              </button>
-            </div>
-          </main>
-        </div>
+                {skillGroups.length > 0 ? (
+                  <>
+                    <hr className="retro-hr" />
+                    <h2 id="skills">Technical Skills</h2>
+                    {skillGroups.map((group) => (
+                      <div key={group.name} className="retro-box">
+                        <p style={{ margin: '0 0 6px' }}>
+                          <strong>
+                            <u>{group.name}</u>
+                          </strong>
+                        </p>
+                        <p style={{ margin: 0, fontFamily: 'Courier New, Courier, monospace', fontSize: '14px' }}>
+                          {group.skills.join(' | ')}
+                        </p>
+                      </div>
+                    ))}
+                  </>
+                ) : null}
 
-        <footer className="mt-24 max-w-2xl border-t border-ink/10 pt-8 font-sans text-sm text-ink-muted">
-          <p>
-            © {new Date().getFullYear()} {name}. Static page on{' '}
-            <a
-              href="https://pages.github.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-ink underline decoration-rust/30 underline-offset-[3px] hover:decoration-rust"
-            >
-              GitHub Pages
-            </a>
-            .
+                {interestItems.length > 0 ? (
+                  <>
+                    <hr className="retro-hr" />
+                    <h2 id="beyond">Beyond Work</h2>
+                    <ul>
+                      {interestItems.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </>
+                ) : null}
+
+                <hr className="retro-hr" />
+                <h2 id="contact">Contact Information</h2>
+                <div className="retro-box">
+                  <p style={{ margin: '0 0 8px' }}>
+                    <strong>E-mail:</strong>{' '}
+                    <a href={`mailto:${email}`}>{email}</a>
+                  </p>
+                  <p style={{ margin: '0 0 8px' }}>
+                    <strong>LinkedIn:</strong>{' '}
+                    <a href={linkedin} target="_blank" rel="noopener noreferrer">
+                      {linkedin.replace(/^https?:\/\//, '')}
+                    </a>
+                  </p>
+                  <p style={{ margin: 0 }}>
+                    <strong>GitHub:</strong>{' '}
+                    <a href={github} target="_blank" rel="noopener noreferrer">
+                      github.com/{githubHandle}
+                    </a>
+                  </p>
+                </div>
+
+                <p align="center" style={{ fontSize: '14px', marginTop: '16px' }}>
+                  <button type="button" className="retro-btn" onClick={handleDownload}>
+                    Download résumé (PDF)
+                  </button>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div className="retro-footer">
+          <p style={{ margin: '0 0 6px' }}>
+            © {new Date().getFullYear()} {name}. This page is hosted on GitHub Pages.
           </p>
-        </footer>
+          <p style={{ margin: 0 }}>
+            Built with React ·{' '}
+            <a href={`mailto:${email}`}>Contact webmaster</a>
+          </p>
+        </div>
       </div>
     </div>
   );
