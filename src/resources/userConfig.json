@@ -4,7 +4,7 @@
   "tagline": "Distributed systems, full stack, and tools that help real people.",
   "location": "",
   "personalNote": "I built permprocessing.fyi because PERM timelines shouldn't feel like guesswork. Most of my day job stays behind logins; this page is the open part.",
-  "blurb": "I've worked in financial services and mortgage tech for years, shipping systems that have to stay correct under load. That usually means Kotlin and Spring Boot on the backend, React and Next.js on the front, and lately more AI-assisted flows where they actually save time.\n\nHappy to talk if you're hiring, want to collaborate, or are curious about something below.",
+  "blurb": "I hold a Master's degree in Computer Science and build highly scalable distributed systems for production financial products. My work spans backend services, full stack applications, and the operational rigor needed when correctness, compliance, and load all matter at once.\n\nI've worked in financial services and mortgage technology for years, shipping platforms that families and institutions rely on daily. Happy to talk if you're hiring, want to collaborate, or are curious about something below.",
   "beyondWork": [
     "Side projects with a real user in mind",
     "Immigration and data tooling",
@@ -15,8 +15,7 @@
   "github": "https://github.com/karansharmaufl",
   "focusAreas": [
     "Highly scalable distributed systems",
-    "Full stack applications",
-    "AI-driven applications"
+    "Full stack applications"
   ],
   "skillGroups": [
     {
@@ -39,9 +38,9 @@
   "skills": [],
   "highlights": [
     {
-      "title": "GreenLight",
+      "title": "Greenlight Financial Technology",
       "context": "Professional",
-      "description": "Consumer financial products end to end, with product and compliance in the loop. Focus on shipping fast without breaking what families rely on.",
+      "description": "Led engineering on the Save and Invest platform. I owned delivery across the invest experience, including a redesign that helped grow trading volume to about $76 million, up from about $48 million in 2024, while keeping compliance, reliability, and product partners aligned end to end.",
       "href": null
     },
     {
@@ -53,7 +52,7 @@
     {
       "title": "permprocessing.fyi",
       "context": "Independent",
-      "description": "Public site for PERM timelines, calculators, and guides. Full stack, with AI where it helps people read messy government data faster.",
+      "description": "Public site for PERM timelines, calculators, and guides. Full stack project built to make fragmented government processing data easier for people to understand and act on.",
       "href": "https://www.permprocessing.fyi"
     }
   ]

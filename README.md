@@ -53,8 +53,15 @@ That writes `https://janesmith.github.io/my-portfolio` into `package.json` so as
 ## Deploy to GitHub Pages
 
 1. `npm run deploy` (runs `predeploy` build, then `gh-pages` pushes the `build/` folder to the `gh-pages` branch).
-2. In the GitHub repo: **Settings → Pages**, set the source to the **`gh-pages`** branch (folder `/` if asked).
+2. In the GitHub repo: **Settings → Pages**:
+   - **Source:** Deploy from a branch (not “GitHub Actions” unless you added a workflow)
+   - **Branch:** `gh-pages` (not `main`)
+   - **Folder:** `/ (root)`
 3. Open `https://<username>.github.io/<repo>/` (same URL as `homepage` in `package.json`).
+
+### Site shows the README instead of the React app?
+
+GitHub is publishing **`main`**, where Jekyll turns `README.md` into the homepage. Switch Pages to the **`gh-pages`** branch (step 2 above), wait 1–2 minutes, then hard-refresh. The repo includes `public/.nojekyll` so Jekyll does not process the built site.
 
 ---
 
